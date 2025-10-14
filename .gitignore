@@ -1,0 +1,36 @@
+.env
+
+#Entornos virtuales
+new
+venv/
+env/
+.venv/
+#Python
+__pycache__/
+*.py[cod]*
+*$py.class
+
+#Distribuciones
+build/
+dist/
+*.egg-info/
+.eggs/
+#IDEs
+.vscode/    
+.idea/
+*.sublime-project
+*.sublime-workspace
+#Jupyter Notebook
+.ipynb_checkpoints
+#Sistemas operativos
+.DS_Store
+Thumbs.db
+#Archivos de configuración
+.env
+
+#credentials
+credentials/   
+gen-lang-client-0691959961-e27456602026.json
+token.pickle
+
+
