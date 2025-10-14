@@ -54,3 +54,8 @@ def llm_call(state: State):
             )
         ]
     }
+#Verifica que las credenciales estén configuradas
+credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+if not credentials_path:
+    raise ValueError("GOOGLE_APPLICATION_CREDENTIALS no está configurada correctamente.")
+print(f"Credenciales configuradas en: {credentials_path}")
