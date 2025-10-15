@@ -28,9 +28,6 @@ Thumbs.db
 #Archivos de configuración
 .env
 
-#credentials
-credentials/   
-gen-lang-client-0691959961-e27456602026.json
-token.pickle
+
 
 
