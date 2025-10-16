@@ -30,15 +30,23 @@ def main():
 
     # Inicializar el agente
     agent = GeminiAgent()
-    state = State(email_input={"author": "John Doe", "to": "Jane Doe", "subject": "Meeting Update", "email_thread": "Details about the meeting..."})
+    state = State(email_input={"author": "John Doe", "to": "Jane Doe", "subject": "Meeting Update", "email_thread": "Details about the meeting..."}
+                  
+    , messages=[]
+    )
+
     
     # Llamar al router
     triage_result = triage_router(state)
     print("Triage Result:", triage_result)
 
     # Llamar al modelo con herramientas
-    llm_result = llm_call(state)
-    print("LLM Result:", llm_result)
+    if triage_result.goto == "response_agent":
+        llm_result = llm_call(state)
+        print("LLM Result:", llm_result)
+    else:
+        print("Flujo terminado: No se necesita respuesta (clasificación:", triage_result.update.get("classification_decision"), ")")
+
 
 
 

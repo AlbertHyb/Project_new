@@ -1,6 +1,7 @@
 import os
 from langgraph.types import Command
 from langgraph.graph import END
+from agent.agent import should_continue
 from agent.schemas import RouterSchema, State  # Asumo que RouterSchema es para la salida; si no, ajusta
 from prompts.prompts import triage_system_prompt, triage_user_prompt, default_triage_instructions, default_background
 from tools.utils import parse_email, format_email_markdown
@@ -79,3 +80,7 @@ def triage_router(state: State):
         raise ValueError(f"Invalid classification: {result.classification}")
     
     return Command(goto=goto, update=update)
+
+
+
+
