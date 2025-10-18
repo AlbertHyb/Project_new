@@ -1,18 +1,19 @@
 # Proyecto Nuevo
 
-Este proyecto tiene como objetivo desarrollar una aplicación que resuelve necesidades específicas del usuario mediante el uso de tecnologías modernas. Incluye una estructura modular, documentación clara y pruebas automatizadas para garantizar la calidad y mantenibilidad del código.
+Este proyecto desarrolla un agente de AI que asiste al usuario utilizando tecnologías modernas como LangGraph, LangChain y LangSmith. La aplicación está escrita en Python, con una estructura modular, documentación clara y pruebas automatizadas para garantizar la calidad y mantenibilidad del código.
 
 ## Características principales
 
-- Arquitectura escalable y modular.
+- Arquitectura escalable y modular en Python.
 - Integración de pruebas unitarias.
 - Documentación técnica incluida.
+- Uso de LangGraph, LangChain y LangSmith para el desarrollo del agente de AI.
 
 ## Requisitos
 
 - Windows 10 o superior
 - Visual Studio Code
-- Node.js (si aplica)
+- Python 3.10 o superior
 - Otros requisitos específicos según el entorno
 
 ## Instalación
@@ -23,16 +24,18 @@ Este proyecto tiene como objetivo desarrollar una aplicación que resuelve neces
    ```
 2. Instala las dependencias:
    ```
-   npm install
+   pip install -r requirements.txt
    ```
 3. Ejecuta la aplicación:
    ```
-   npm start
+   python main.py
    ```
 
 ## Estructura del proyecto
 
-- `/src`: Código fuente principal
+- `/agent`: Código fuente principal del agente de AI
+- `/tools`: Utilidades y herramientas adicionales
+- `/prompts`: Prompts utilizados por el agente
 - `/tests`: Pruebas automatizadas
 - `/docs`: Documentación adicional
 
