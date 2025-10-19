@@ -15,18 +15,14 @@ from typing import Literal
 from langgraph.graph import END
 from langgraph.graph import StateGraph, START, END
 from tools.email_assistant_utils import show_graph
-from pydantic import BaseModel, Field
 from tools.utils import parse_email, format_email_markdown
 from prompts.prompts import triage_system_prompt, triage_user_prompt, default_triage_instructions, default_background
 from langchain.chat_models import init_chat_model
-from langgraph.graph import END
-from langgraph.types import Command
 from rich.markdown import Markdown
 Markdown(triage_system_prompt)
 
 
 load_dotenv(".env")
-
 class GeminiAgent:
     def __init__(self):
         api_key = os.getenv("GOOGLE_API_KEY")

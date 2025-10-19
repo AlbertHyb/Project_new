@@ -9,6 +9,8 @@ env/
 __pycache__/
 *.py[cod]*
 *$py.class
+.pytest_cache/
+#
 
 #Distribuciones
 build/
@@ -27,6 +29,11 @@ dist/
 Thumbs.db
 #Archivos de configuración
 .env
+
+#paths to ignore
+path
+app
+
 
 
 

@@ -1,14 +1,16 @@
 import os
 from langgraph.types import Command
 from langgraph.graph import END
-from agent.agent import should_continue
 from agent.schemas import RouterSchema, State  # Asumo que RouterSchema es para la salida; si no, ajusta
 from prompts.prompts import triage_system_prompt, triage_user_prompt, default_triage_instructions, default_background
 from tools.utils import parse_email, format_email_markdown
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import ChatPromptTemplate
 from pydantic import BaseModel, Field  # Para salida estructurada
+from agent.schemas import State
+from typing import Literal
+
+
 
 # Define el schema de salida para classification
 class RouterOutput(BaseModel):
@@ -80,6 +82,10 @@ def triage_router(state: State):
         raise ValueError(f"Invalid classification: {result.classification}")
     
     return Command(goto=goto, update=update)
+
+
+
+   
 
 
 
