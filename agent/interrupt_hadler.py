@@ -1,17 +1,12 @@
-from typing import Literal
-from click import Command
 from agent.schemas import State
 from tools.email_tools import tools_by_name
 from agent.triage_router import interrupt, parse_email, format_email_markdown
-from prompts.prompts import triage_system_prompt, format_for_display
+from prompts.prompts import format_for_display
 from langgraph.graph import END
 
-def interrupt_handler(state: "State") -> "Command[Literal['llm_call', '__end__']]":
+def interrupt_handler(state: "State") -> dict:
     """Creates an interrupt for human review of tool calls"""
-    # ...existing code...
-    triage_system_prompt = triage_system_prompt  # placeholder to avoid unused variable warnings
     result = []
-
     goto = "llm_call"
 
     for tool_call in state["messages"][-1].tool_calls:
@@ -50,6 +45,7 @@ def interrupt_handler(state: "State") -> "Command[Literal['llm_call', '__end__']
             tool = tools_by_name[tool_call["name"]]
             observation = tool.invoke(tool_call["args"])
             result.append({"role": "tool", "content": observation, "tool_call_id": tool_call["id"]})
+
         elif response["type"] == "edit":
             tool = tools_by_name[tool_call["name"]]
             edited_args = response["args"]["args"]
@@ -61,6 +57,7 @@ def interrupt_handler(state: "State") -> "Command[Literal['llm_call', '__end__']
             result.append(ai_message.model_copy(update={"tool_calls": updated_tool_calls}))
             observation = tool.invoke(edited_args)
             result.append({"role": "tool", "content": observation, "tool_call_id": current_id})
+
         elif response["type"] == "ignore":
             if tool_call["name"] == "write_email":
                 result.append({"role": "tool", "content": "User ignored this email draft. Ignore this email and end the workflow.", "tool_call_id": tool_call["id"]})
@@ -73,6 +70,7 @@ def interrupt_handler(state: "State") -> "Command[Literal['llm_call', '__end__']
                 goto = END
             else:
                 raise ValueError(f"Invalid tool call: {tool_call['name']}")
+            
         elif response["type"] == "response":
             user_feedback = response["args"]
             if tool_call["name"] == "write_email":
@@ -87,4 +85,4 @@ def interrupt_handler(state: "State") -> "Command[Literal['llm_call', '__end__']
             raise ValueError(f"Invalid response: {response}")
 
     update = {"messages": result}
-    return Command(name="example_command", callback=some_callback)
+    return {"goto": goto, "update": update}
