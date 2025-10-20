@@ -13,3 +13,4 @@ def format_email_markdown(subject, author, to, email_thread):
     markdown += f"**To:** {to}\n"
     markdown += f"**Email Thread:**\n{email_thread}\n"
     return markdown
+
