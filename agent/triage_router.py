@@ -28,8 +28,8 @@ def triage_router(state: State) -> Command[Literal["triage_interrupt_handler", "
 
     # Format system prompt with background and triage instructions
     system_prompt = triage_system_prompt.format(
-        background=default_background,
-        triage_instructions=default_triage_instructions
+        antecedentes=default_background,
+        instrucciones_triage=default_triage_instructions
     )
 
     # Run the router LLM

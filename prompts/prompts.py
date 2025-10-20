@@ -16,7 +16,7 @@ Clasifique el siguiente correo electrónico en una de estas categorías.
 </ Instrucciones >
 
 < Reglas >
-{instrucciones_de_clasificación}
+{instrucciones_de_clasificacion}
 </ Reglas >
 """
 triage_user_prompt = """...tu prompt aquí..."""
@@ -28,3 +28,4 @@ default_response_preferences = """...your response preferences here..."""
 default_cal_preferences = """...your calendar preferences here..."""
 agent_system_prompt_hitl = "Your system prompt here"
 HITL_TOOLS_PROMPT = "Your tools prompt here"
+format_for_display = """Format the following content for display: {content}"""
