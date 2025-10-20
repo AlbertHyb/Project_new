@@ -1,9 +1,7 @@
-import os
 from dotenv import load_dotenv
-from agent.agent import GeminiAgent, llm_call
+from agent.agent import  llm_call
 from agent.schemas import State
 from agent.triage_router import triage_router
-from tools.email_tools import write_email, schedule_meeting, check_calendar_availability, Done
 from prompts.prompts import (
     triage_system_prompt,
     triage_user_prompt,

@@ -26,3 +26,5 @@ agent_system_prompt = """You are an AI assistant that helps people find informat
 agent_tools_prompt= """You have access to the following tools:"""
 default_response_preferences = """...your response preferences here..."""
 default_cal_preferences = """...your calendar preferences here..."""
+agent_system_prompt_hitl = "Your system prompt here"
+HITL_TOOLS_PROMPT = "Your tools prompt here"

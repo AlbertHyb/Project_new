@@ -1,3 +1,5 @@
+from dotenv import load_dotenv  # Nueva importación
+load_dotenv()
 from langchain_core.tools import tool
 from datetime import datetime
 from pydantic import BaseModel
@@ -27,8 +29,8 @@ def check_calendar_availability(day: str) -> str:
 @tool
 # This is new! 
 class Question(BaseModel):
-      """Question to ask user."""
-      content: str
+    """Question to ask user."""
+    content: str
 
 @tool
 class Done(BaseModel):

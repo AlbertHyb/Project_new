@@ -1,23 +1,13 @@
 import os
 from dotenv import load_dotenv
 from langchain_google_genai.chat_models import ChatGoogleGenerativeAI
-from langchain_core.messages import HumanMessage
 from tools.email_tools import write_email, schedule_meeting, check_calendar_availability, Done
 from agent.schemas import State
-from prompts.prompts import (
-    agent_system_prompt,
-    agent_tools_prompt,
-    default_background,
-    default_response_preferences,
-    default_cal_preferences,
-)
 from typing import Literal
 from langgraph.graph import END
 from langgraph.graph import StateGraph, START, END
 from tools.email_assistant_utils import show_graph
-from tools.utils import parse_email, format_email_markdown
-from prompts.prompts import triage_system_prompt, triage_user_prompt, default_triage_instructions, default_background
-from langchain.chat_models import init_chat_model
+from prompts.prompts import triage_system_prompt
 from rich.markdown import Markdown
 Markdown(triage_system_prompt)
 
